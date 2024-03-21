@@ -1,0 +1,143 @@
+% Copyright 2013 by Charles Brunet <charles.brunet.1@ulaval.ca>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\mode<presentation>
+
+\newif\ifbeamer@sidebar
+\beamer@sidebarfalse
+\DeclareOptionBeamer{sidebar}[]{\beamer@sidebartrue}
+\ProcessOptionsBeamer
+
+\usecolortheme{ulaval}
+\useinnertheme{rectangles}
+\useoutertheme{tree} % Tree
+%\useoutertheme{split} % Litle STT-7125
+
+%%% Added so that I can have a little subtitle on top
+\setbeamertemplate{headline}
+{%
+     % \begin{beamercolorbox}[wd=\paperwidth,colsep=1.5pt]{upper separation line head}
+    % \end{beamercolorbox}
+    \vspace{-0.01cm}
+    \begin{beamercolorbox}[wd=1.01\paperwidth,ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}
+      \usebeamerfont{title in head/foot}\insertshorttitle 
+      \hfill \insertshortauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=1.01\paperwidth,ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{section in head/foot}
+      \usebeamerfont{section in head/foot}%
+      \ifbeamer@tree@showhooks
+        \setbox\beamer@tempbox=\hbox{\insertsectionhead}%
+        \ifdim\wd\beamer@tempbox>1pt%
+          \hskip2pt\raise1.9pt\hbox{\vrule width0.4pt height1.875ex\vrule width 5pt height0.4pt}%
+          \hskip1pt%
+        \fi%
+      \else%  
+        \hskip6pt%
+      \fi%
+      \insertsectionhead
+      \usebeamerfont{subsection in head/foot}%
+      \ifbeamer@tree@showhooks
+        \setbox\beamer@tempbox=\hbox{\insertsubsectionhead}%
+        \ifdim\wd\beamer@tempbox>1pt%
+          \ \raise1.9pt\hbox{\vrule width 5pt height0.4pt}%
+          \hskip1pt%
+        \fi%
+      \else%  
+        \hskip12pt%
+      \fi%
+      \insertsubsectionhead\hfill\insertframenumber/\inserttotalframenumber\hspace{0.5em}
+    \end{beamercolorbox}
+    \vspace{-0.15cm}
+    
+    % %% for a logo in this header
+    % \vspace{-0.6cm}
+    % \hfill\includegraphics[width=1.2cm]{UL_P.pdf}\hspace{0.4cm}
+ 
+}
+% \ifbeamer@sidebar
+% \useoutertheme[height=0pt, width=1.8cm]{sidebar}
+% \else
+% \useoutertheme{infolines} % classic
+% \setbeamertemplate{headline}[default]
+% \fi
+
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+
+
+\addtobeamertemplate{block begin}{\setlength\abovedisplayskip{0pt}}
+
+% Tills' opinion: should be done in an inner theme, not here.
+
+\usesubitemizeitemtemplate{%
+    \tiny\raise1.5pt\hbox{\color{beamerstructure}$\blacktriangleright$}%
+}
+\usesubsubitemizeitemtemplate{%
+    \tiny\raise1.5pt\hbox{\color{beamerstructure}$\bigstar$}%
+}
+
+\setbeamersize{text margin left=2em,text margin right=2em}
+
+%% =======
+%% TITLE
+%% ========
+\addtobeamertemplate{frametitle}{ \vskip.1cm%\hskip-\beamer@leftsidebar
+    
+}{%
+
+\ifbeamer@sidebar
+  \advance\rightskip-2em\hfill\llap{\insertlogo}
+\fi
+  \vskip-.3cm\hskip-\Gm@lmargin%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=1pt,left,shadow=true]{separation line}%
+    \end{beamercolorbox}
+}
+
+%% =======
+%% Footline
+%% =======
+
+
+% \defbeamertemplate*{footline}{}
+% {
+%   \leavevmode%
+%   \hbox{%
+%   \begin{beamercolorbox}[wd=.332\paperwidth,ht=2.25ex,dp=1ex,center]{}%{title in head/foot}%author in head/foot}%
+%     % \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{%(\insertshortinstitute) % retirer ceci pour ajouter le nom court de l'institution
+%      % Uncomment for name at the corner   
+%     }
+%   \end{beamercolorbox}%
+%   \begin{beamercolorbox}[wd=.004\paperwidth,ht=2.25ex,dp=1ex,ignorebg]{}\end{beamercolorbox}%
+%   \begin{beamercolorbox}[wd=.332\paperwidth,ht=2.25ex,dp=1ex,center]{}%title in head/foot}%
+%     \usebeamerfont{title in head/foot}%\insertshorttitle
+%   \end{beamercolorbox}%
+%   \begin{beamercolorbox}[wd=.332\paperwidth,ht=2.25ex,dp=1ex,right]{}%date in head/foot}%
+%     %\hspace*{2em}
+%     % \insertframenumber{}/\inserttotalframenumber{} \hspace*{2ex}
+%   \end{beamercolorbox}}%
+%   \vskip0pt%
+% }
+
+\ifbeamer@sidebar
+  \defbeamertemplate*{sidebar \beamer@sidebarside}{ulaval theme}
+  {
+    \vskip1.1cm
+    \insertverticalnavigation{\beamer@sidebarwidth}%
+  }%
+\fi
+
+%\usebackgroundtemplate{\includegraphics[height=\paperheight]{img/bg.jpg}}
+\mode
+<all>

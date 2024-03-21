@@ -1,0 +1,246 @@
+\usefonttheme{serif}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{natbib}
+\usepackage[french]{babel}
+\usepackage{booktabs}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz}
+\usepackage{background}
+\usepackage[overlay,absolute]{textpos} % couvertures
+
+  \usepackage{changepage}                % page licence
+  \usepackage{tabularx}                  % page licence
+  \usepackage{booktabs}                  % beaux tableaux
+  \usepackage{fontawesome5}              % icônes
+  \usepackage{awesomebox}                % \tipbox et autres
+  \usepackage{listings}                  % code source
+  \usepackage[export]{adjustbox}         % cadre autour image
+
+% \usepackage{bidicontour} % Contour with xelatex
+% \usepackage{bidi}
+% \bidicontourlength{0.1pt}
+% % \usepackage{efbox,graphicx}
+
+
+  
+
+  
+  
+ %% Couleurs
+  \definecolor{comments}{rgb}{0.5,0.55,0.6} % commentaires
+  \definecolor{link}{rgb}{0,0.4,0.6}   % liens internes
+  \definecolor{url}{rgb}{0.6,0,0}      % liens externes
+  \definecolor{rouge}{rgb}{0.9,0,0.1}  % bandeau rouge UL
+  \definecolor{or}{rgb}{1,0.8,0}       % bandeau or UL
+
+  %% Hyperliens
+  \hypersetup{%
+    pdfauthor = {Olivier Côté},
+    pdftitle = {Discrimination en assurance générale},
+    colorlinks = false,
+    linktocpage = true,
+    urlcolor = {url},
+    linkcolor = {link},
+    citecolor = {citation},
+    pdfpagemode = {UseOutlines},
+    pdfstartview = {Fit}}
+  \setlength{\XeTeXLinkMargin}{1pt}
+  
+  %% Sections de code source
+  \lstloadlanguages{[LaTeX]TeX}
+  \lstset{language=[LaTeX]TeX,
+    escapeinside=`',
+    extendedchars=true,
+    inputencoding=utf8/latin1,
+    basicstyle=\small\ttfamily\NoAutoSpacing,
+    commentstyle=\color{comments},
+    keywordstyle=\mdseries,
+    emphstyle=\color{alert}\bfseries,
+    backgroundcolor=\color{LightYellow1},
+    frame=lr, rulecolor=\color{LightYellow1},
+    showstringspaces=false}
+
+  %%% =========================
+  %%%  Nouveaux environnements
+  %%% =========================
+
+  %% Environnements pour les demo de code; tirés du document
+  %% principal. (L'environnement 'eqxample' ajoute des filets de part
+  %% et d'autre du bloc pour illustrer les marges.)
+  \newenvironment{demo}{%
+    \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
+    {\end{beamercolorbox}}
+  \newenvironment{texample}[1][0.45\linewidth]{%
+    \noindent\begin{minipage}{#1}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{\dimexpr0.9\linewidth-#1}%
+        \hbox\bgroup\kern-.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
+  \newenvironment{eqxample}{%
+    \noindent\begin{minipage}{.45\linewidth}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{.45\linewidth}%
+        \hbox\bgroup\kern-.2pt\vrule width.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\vrule width.2pt\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
+
+  %% Simplfication de l'environnement 'quote' de beamer
+  \renewenvironment{quote}{%
+    \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
+    {\end{beamercolorbox}}
+
+  %% Exercices
+  \newenvironment{exercice}{%
+    \begin{frame}[fragile=singleslide]
+      \frametitle{\faCogs\; Exercice}}{\end{frame}}
+
+  %% =====================
+  %%  Nouvelles commandes
+  %% =====================
+
+  %% Noms de fonctions, code, environnement, etc.
+  \newcommand{\code}[1]{\textcolor{code}{\texttt{#1}}}
+  \newcommand{\fichier}[1]{\code{#1}}
+  \newcommand{\class}[1]{\textbf{#1}}
+  \newcommand{\pkg}[1]{\textbf{#1}}
+  \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink*}}}
+
+  %% Pour documenter des commandes LaTeX; dérivé de memoir.cls
+  \def\bs{\code{\char`\\}}
+  \newcommand{\meta}[1]{%
+    \ensuremath\langle{\normalfont\itshape #1\/}\ensuremath\rangle}
+  \newcommand{\marg}[1]{%
+    {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
+  \newcommand{\oarg}[1]{%
+    {\ttfamily\char`\[}\meta{#1}{\ttfamily\char`\]}}
+  \newcommand{\cs}[1]{\code{\char`\\#1}}
+  
+    %%% =======
+  %%%  Varia
+  %%% =======
+
+  %% Longueurs pour la composition des pages couvertures avant et
+  %% arrière.
+  \newlength{\banderougewidth} \newlength{\banderougeheight}
+  \newlength{\bandeorwidth}    \newlength{\bandeorheight}
+  \newlength{\imageheight}
+  \newlength{\logoheight}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usefonttheme{serif}    % Pour avoir un "thème de police"
+
+%%% On peut mettre la police principale ici
+
+
+% \usepackage{arevmath}
+
+% %%% Green checkmark
+% \newcommand{\bluecheck}{}%
+% \DeclareRobustCommand{\greencheck}{%
+%   \tikz\fill[scale=0.4, color=black!30!green]
+%   (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;%
+% }
+
+% %% To remove some annoying errors
+% \pdfstringdefDisableCommands{%
+%   \def\\{}%
+%   \def\texttt#1{<#1>}%
+% }
+
+%% Pour les footnote dans un tableau
+% \usepackage{footnote}
+% \makesavenoteenv{tabular}
+% \makesavenoteenv{table}
+ 
+% \efboxsetup{linecolor=black!50,linewidth=0.5pt}
+%\usepackage{adjustbox,lipsum}
+%\frenchbsetup{CompactItemize=false}
+
+
+% \usepackage[babel]{csquotes}
+%\usepackage[url=false, doi=false, style=science, backend=bibtex, bibencoding=ascii]{biblatex}
+% \bibliography{IEEEabrv,bib/OAM}
+
+  
+%\graphicspath{{img/}}
+
+
+\mode<presentation> {
+ %\useoutertheme{infolines} % Pour les thèmes qui n'ont pas de pied-de-page
+ \usetheme{ulaval}
+ %\usecolortheme{ulaval}
+  \setbeamercovered{transparent}
+ %\setbeamercovered{invisible}
+ \setbeamertemplate{navigation symbols}{} % Enlever les icônes de navigation
+}
+
+
+%\usepackage{bm} 
+% For typesetting bold math (not \mathbold)
+%\includeonlyframes{}
+
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+%\setbeameroption{show notes}
+%\setbeamertemplate{note page}[plain]
+
+% \logo{%\includegraphics[height=0.6cm]{COPL}\hspace{.5cm}%
+%  \includegraphics[height=0.6cm]{UL_P}\hspace{.2cm}\vspace{-.05\paperheight}}
+ 
+
+
+%\date{24 janvier 2022}%\today} % \today will show current date. 
+% Alternatively, you can specify a date.
+%\today 
+
+
+
+\newenvironment{xframe}[2][]
+  {\begin{frame}[fragile,environment=xframe,#1]
+  \frametitle{#2}}
+  {\end{frame}}
+
+\AtBeginSection[]{
+  \begin{frame}
+ \Huge \centerline{\insertsection}
+  \small \tableofcontents[currentsection, hideothersubsections]
+  \end{frame} 
+}
+
+%% TIKZ
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=ulbeige!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=ulgray!50]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\usetikzlibrary{positioning}
+
+\setcounter{tocdepth}{2}
+\newcommand{\acc}[1]{\textcolor{ulred}{\textbf{#1}}}

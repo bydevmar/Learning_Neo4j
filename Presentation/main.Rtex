@@ -1,0 +1,71 @@
+\documentclass[aspectratio=149]{beamer}
+% The values that it accepts are: 1610, 169, 149, 54, 43 and 32, which stand for the ratios 16:10, 16:9, 14:9, 5:4, 4:3 and 3:2, respectively.
+
+\include{varia/preamble}
+
+\title[Short Title]{Long Title}
+%\subtitle[]{}
+
+\author[Short Author Name]{Long Author Name}
+\institute[Université Laval]
+{
+	École d'actuariat \\
+	Université Laval, Québec, Canada \\
+	\medskip
+	{\emph{dummy.email.1@ulaval.ca}}
+}
+
+\begin{document}
+
+
+
+\sloppy
+
+%% =========
+%% page titre
+%% =========
+
+%% uncomment for cool titlepage
+% \include{0_pagetitre}
+
+%% comment for cool titlepage
+
+\begin{frame}[label=titre, plain]
+ \titlepage
+ \begin{center}%\includegraphics[height=1.2cm]{COPL}%
+  %\hspace{2cm}
+  \includegraphics[height=1.4cm]{img/ul_logo_mono.png}\end{center}
+%   \includegraphics[height=2cm]{img/UL_actu.pdf}\end{center}
+\end{frame}
+
+%% =========
+%% TOC
+%% =========
+\begin{frame}[label=toc]{Table des matières}
+ \setlength{\leftskip}{5cm}%
+ \tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+%% =========
+%% Contenu
+%% =========
+
+\include{1_contexte} 
+\include{4_conclu}
+
+
+%% =========
+%% Biblio
+%% =========
+
+\begin{frame}[allowframebreaks]{Bibliographie}
+\bibliographystyle{francais} 
+\bibliography{varia/biblio}  
+ 
+\end{frame}
+
+
+
+% End of slides
+\end{document}
+
