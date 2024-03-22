@@ -3,16 +3,23 @@
 
 \include{varia/preamble}
 
-\title[Short Title]{Long Title}
+\title[Les fondements des bases de données graphiques]{Exploration de Neo4j}
 %\subtitle[]{}
 
-\author[Short Author Name]{Long Author Name}
-\institute[Université Laval]
+
+\institute[Faculté Polydisciplinaire de Ouarzazate]
 {
-	École d'actuariat \\
-	Université Laval, Québec, Canada \\
+	Faculté Polydisciplinaire de Ouarzazate \\
+	Master Mathématiques Appliquées pour la Science des Données \\
 	\medskip
-	{\emph{dummy.email.1@ulaval.ca}}
+        \scriptsize{Présenté par :\\
+	Driss ABATOUR \\
+        Abdelfattah BOUHLALI \\
+        Nour Eddine GAJJA \\
+        Mohamed MALLOUKI \\
+        Encadré par : \\ 
+        Salma GAOU \\
+        Charaf Hamidi}
 }
 
 \begin{document}
@@ -31,11 +38,11 @@
 %% comment for cool titlepage
 
 \begin{frame}[label=titre, plain]
- \titlepage
- \begin{center}%\includegraphics[height=1.2cm]{COPL}%
+\begin{center}%\includegraphics[height=1.2cm]{COPL}%
   %\hspace{2cm}
-  \includegraphics[height=1.4cm]{img/ul_logo_mono.png}\end{center}
-%   \includegraphics[height=2cm]{img/UL_actu.pdf}\end{center}
+  \includegraphics[height=1.5cm]{img/fpo_logo.png}\end{center}
+ \titlepage
+ 
 \end{frame}
 
 %% =========
@@ -50,22 +57,21 @@
 %% Contenu
 %% =========
 
-\include{1_contexte} 
-\include{4_conclu}
+\include{Frames/Introduction/Introduction} 
+\include{Frames/Concepts_de_base/Concepts}
 
 
 %% =========
 %% Biblio
 %% =========
 
-\begin{frame}[allowframebreaks]{Bibliographie}
-\bibliographystyle{francais} 
-\bibliography{varia/biblio}  
+%\begin{frame}[allowframebreaks]{Bibliographie}
+%\bibliographystyle{francais} 
+%\bibliography{varia/biblio}  
  
-\end{frame}
+%\end{frame}
 
 
 
 % End of slides
 \end{document}
-

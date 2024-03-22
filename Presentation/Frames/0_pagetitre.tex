@@ -1,5 +1,3 @@
-
-
 %% Normes de présentation visuelle 2018
 %%
 %% - grille de 8 unités de haut
@@ -10,7 +8,7 @@
 %% - blanc équivalent à la largeur du blason à droite du logo
 %% - bande or de la largeur du logo + blanc à droite
 %%
-%% Dimensions du logo UL
+%% Dimensions du logo fpo
 %%
 %% hauteur: 128
 %% largeur totale: 310
@@ -28,7 +26,7 @@
 \textblockorigin{0mm}{0mm}
 \setlength{\parindent}{0mm}
 \setlength{\imageheight}{54.9191919\TPVertModule}
-\setlength{\logoheight}{4\TPVertModule}
+\setlength{\logoheight}{6\TPVertModule} % Increased logo height
 \setlength{\bandeorwidth}{3.203125\logoheight}
 \setlength{\banderougewidth}{\paperwidth}
 \addtolength{\banderougewidth}{-\bandeorwidth}
@@ -42,29 +40,33 @@
 \def\subtitlefmt{%
   \mdseries\fontsize{11}{12}\selectfont Smaller subtitle
   \par}  
-\def\authorfmt{%
-  \bfseries\fontsize{12}{12}\selectfont {\scriptsize \mdseries Presented by \par} \\ 
-  Student 1{\scriptsize \mdseries , \par}\\ 
-  Student 2 {\scriptsize \mdseries et}\\
-  Student 3\par}
+
 \def\sigle{%
   \bfseries\fontsize{14}{14}\selectfont ABC-1234}   
+  
+\def\presente{%
+  \mdseries\fontsize{10}{10}\selectfont Présenté par}  
+  
+\def\encadre{%
+  \mdseries\fontsize{10}{10}\selectfont Encadré par}    
 
 %%%
 %%% Page de titre
 %%%
 
 \begin{frame}[plain]
+%% logo FPO
+  \begin{textblock*}{\bandeorwidth}(\banderougewidth,56\TPVertModule) % Adjusted position
+    \includegraphics[height=\logoheight,keepaspectratio=true]{img/fpo_logo.png}
+  \end{textblock*}
+  
   %% bandeau identitaire
-  \begin{textblock*}{\paperwidth}[0,1](0mm,56\TPVertModule)
+  \begin{textblock*}{\paperwidth}[0,1](0mm,55\TPVertModule) % Adjusted position
     \textcolor{ulgray_red}{\rule{\banderougewidth}{\banderougeheight}}% % bande rouge
     \textcolor{ulgray_gold}{\rule{\bandeorwidth}{\bandeorheight}}           % bande or
   \end{textblock*}
 
-  %% logo UL
-  \begin{textblock*}{\bandeorwidth}(\banderougewidth,58\TPVertModule)
-    \includegraphics[height=\logoheight,keepaspectratio=true]{img/ul_logo_mono.png}
-  \end{textblock*}
+  
 
   %% image de fond
   \begin{textblock*}{\paperwidth}(0mm,0mm)
@@ -72,7 +74,7 @@
   \end{textblock*}
 
   %% titre
-  \begin{textblock*}{\banderougewidth}(0.8\TPHorizModule,4\TPVertModule)
+  \begin{textblock*}{\banderougewidth}(0.9\TPHorizModule,4\TPVertModule)
 
     \textcolor{white}{\titlefmt}
   \end{textblock*}
@@ -84,10 +86,7 @@
     %}}
   \end{textblock*}
   
-   %% auteurs
-  \begin{textblock*}{\textwidth}(0.8\TPHorizModule,23\TPVertModule)
-    \textcolor{white}{\authorfmt}
-  \end{textblock*}
+  
 
 %  %% class
 %   \begin{textblock*}{\textwidth}(0.8\TPHorizModule,44\TPVertModule)
@@ -99,8 +98,15 @@
     \textcolor{white}{\sigle}
   \end{textblock*}
   
-  %% date
-  \begin{textblock*}{\textwidth}(0.8\TPHorizModule,50\TPVertModule)
-    \textcolor{white}{\today}
+  %% présenté par
+  \begin{textblock*}{\banderougewidth}(0.8\TPHorizModule,48\TPVertModule)
+    \textcolor{white}{\presente}
   \end{textblock*}
+  
+  %% encadré par
+  \begin{textblock*}{\banderougewidth}(0.8\TPHorizModule,50\TPVertModule)
+    \textcolor{white}{\encadre}
+  \end{textblock*}
+
+      
 \end{frame}
