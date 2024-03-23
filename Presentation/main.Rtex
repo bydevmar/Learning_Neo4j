@@ -12,16 +12,15 @@
 	Faculté Polydisciplinaire de Ouarzazate \\
 	Master Mathématiques Appliquées pour la Science des Données \\
 	\medskip
-        \scriptsize{Présenté par :\\
-	Driss ABATOUR \\
-        Abdelfattah BOUHLALI \\
+        \textbf{Présenté par :}\\
         Nour Eddine GAJJA \\
+        Abdelfattah BOUHLALI \\
+	Driss ABATOUR \\
         Mohamed MALLOUKI \\
-        Encadré par : \\ 
+        \textbf{Encadré par :} \\ 
         Salma GAOU \\
-        Charaf Hamidi}
+        Charaf Hamidi
 }
-
 \begin{document}
 
 
@@ -63,7 +62,16 @@
 \include{Frames/Architecture_de_Neo4j/Architecture}
 \include{Frames/Use_Case/Cas_Utilisation}
 \include{Frames/Demonstration/Demostration}
+\include{Frames/Ressources_et_communaute/Ressources}
 \include{Frames/Conclusion/Conclusion}
+\begin{frame}{Remerciement}
+  \centering
+  \Huge Merci pour votre attention!\\
+  \normalsize
+  \vspace{10mm} % Adds vertical space
+  Si vous avez des questions ou des commentaires,\\ 
+  je serais heureux de vous répondre.
+\end{frame}
 %% =========
 %% Biblio
 %% =========
