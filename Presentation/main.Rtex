@@ -61,8 +61,8 @@
 \include{Frames/Concepts_de_base/Concepts}
 \include{Frames/Cypher_Query_Language/Cypher}
 \include{Frames/Architecture_de_Neo4j/Architecture}
-\include{Frames/Demonstration/Demostration}
 \include{Frames/Use_Case/Cas_Utilisation}
+\include{Frames/Demonstration/Demostration}
 \include{Frames/Conclusion/Conclusion}
 %% =========
 %% Biblio

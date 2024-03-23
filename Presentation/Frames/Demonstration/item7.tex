@@ -1,0 +1,16 @@
+\begin{frame}{Exécution de requêtes en direct}
+  \begin{block}{Trouver tous les joueurs d'une équipe}
+    \begin{itemize}
+      \item MATCH (j:Joueur)-[:JOUE\_POUR]->(e:Equipe {nom: 'PSG'});
+      \item RETURN j.nom, j.prenom, j.age;
+    \end{itemize}
+    Cette requête retourne les noms, prénoms et âges de tous les joueurs qui jouent pour le PSG.
+  \end{block}
+  \begin{block}{Trouver l'entraîneur d'une équipe}
+    \begin{itemize}
+      \item MATCH (e:Equipe {nom: 'FCB'})<-[:ENTRAINE]-(entraineur);
+      \item RETURN entraineur.nom;
+    \end{itemize}
+    Cette requête retourne le nom de l'entraîneur du FC Barcelone.
+  \end{block}
+\end{frame}
