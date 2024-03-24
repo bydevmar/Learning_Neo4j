@@ -8,69 +8,88 @@ CREATE (:Equipe {nom: 'Paris Saint-Germain'});
 CREATE (:Equipe {nom: 'Al Nassr'});
 CREATE (:Equipe {nom: 'Real Madrid'});
 
-//Entraîneurs://
+//Entraineurs://
 
-CREATE (:Entraîneur {nom: 'Luis Enrique', prenom: 'Luis', nationalité: 'Espagnol', salaire_annuel: 12000000});
-CREATE (:Entraîneur {nom: 'Rudi Garcia', prenom: 'Rudi', nationalité: 'Français', salaire_annuel: 8000000});
-CREATE (:Entraîneur {nom: 'Carlo Ancelotti', prenom: 'Carlo', nationalité: 'Italien', salaire_annuel: 12500000});
+CREATE (:Entraineur {nom: 'Enrique', prenom: 'Luis', nationalité: 'Espagnol', salaire_annuel: 12000000});
+CREATE (:Entraineur {nom: 'Garcia', prenom: 'Rudi', nationalité: 'Français', salaire_annuel: 8000000});
+CREATE (:Entraineur {nom: 'Ancelotti', prenom: 'Carlo', nationalité: 'Italien', salaire_annuel: 12500000});
 
 //Joueurs (3 par équipe)://
 
 //PSG://
 
-CREATE (:Joueur {nom: 'Achraf Hakimi', prenom: 'Achraf', nationalité: 'Marocain', age: 24, salaire_annuel: 12000000});
+CREATE (:Joueur {nom: 'Hakimi', prenom: 'Achraf', nationalité: 'Marocain', age: 24, salaire_annuel: 12000000});
 CREATE (:Joueur {nom: 'Marquinhos', prenom: 'Marcos', nationalité: 'Brésilien', age: 28, salaire_annuel: 11000000});
-CREATE (:Joueur {nom: 'Marco Verratti', prenom: 'Marco', nationalité: 'Italien', age: 30, salaire_annuel: 10000000});
+CREATE (:Joueur {nom: 'Verratti', prenom: 'Marco', nationalité: 'Italien', age: 30, salaire_annuel: 10000000});
 
 //Al Nassr://
 
-CREATE (:Joueur {nom: 'Cristiano Ronaldo', prenom: 'Cristiano', nationalité: 'Portugais', age: 37, salaire_annuel: 20000000});
+CREATE (:Joueur {nom: 'Ronaldo', prenom: 'Cristiano', nationalité: 'Portugais', age: 37, salaire_annuel: 20000000});
 CREATE (:Joueur {nom: 'Gervinho', prenom: 'Gervinho', nationalité: 'Ivoirien', age: 35, salaire_annuel: 4000000});
-CREATE (:Joueur {nom: 'Vincent Aboubakar', prenom: 'Vincent', nationalité: 'Camerounais', age: 31, salaire_annuel: 6000000});
+CREATE (:Joueur {nom: 'Aboubakar', prenom: 'Vincent', nationalité: 'Camerounais', age: 31, salaire_annuel: 6000000});
 
 //Real Madrid://
 
-CREATE (:Joueur {nom: 'Karim Benzema', prenom: 'Karim', nationalité: 'Français', age: 35, salaire_annuel: 23000000});
-CREATE (:Joueur {nom: 'Luka Modrić', prenom: 'Luka', nationalité: 'Croate', age: 37, salaire_annuel: 10500000});
-CREATE (:Joueur {nom: 'Toni Kroos', prenom: 'Toni', nationalité: 'Allemand', age: 33, salaire_annuel: 15000000});
+CREATE (:Joueur {nom: 'Benzema', prenom: 'Karim', nationalité: 'Français', age: 35, salaire_annuel: 23000000});
+CREATE (:Joueur {nom: 'Modrić', prenom: 'Luka', nationalité: 'Croate', age: 37, salaire_annuel: 10500000});
+CREATE (:Joueur {nom: 'Kroos', prenom: 'Toni', nationalité: 'Allemand', age: 33, salaire_annuel: 15000000});
 
-//2. Création des relations (corrigée)://
+//2. Création des relations ://
 
-//Entraîneur - Équipe://
+//Entraineur - Équipe://
 
-MATCH (coach1:Entraîneur {nom: 'Luis Enrique'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
+MATCH (coach1:Entraineur {nom: 'Enrique'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
 CREATE (coach1)-[:ENTRAINE]->(psg);
 
-// Répétez le même motif pour les autres entraîneurs et équipes...
+MATCH (coach2:Entraineur {nom: 'Garcia'}), (alnassr:Equipe {nom: 'Al Nassr'})
+CREATE (coach2)-[:ENTRAINE]->(alnassr);
 
-MATCH (coach3:Entraîneur {nom: 'Carlo Ancelotti'}), (real:Equipe {nom: 'Real Madrid'})
+MATCH (coach3:Entraineur {nom: 'Ancelotti'}), (real:Equipe {nom: 'Real Madrid'})
 CREATE (coach3)-[:ENTRAINE]->(real);
 
 //Joueur - Équipe://
 
 // PSG
-MATCH (hakimi:Joueur {nom: 'Achraf Hakimi'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
+MATCH (hakimi:Joueur {nom: 'Hakimi'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
 CREATE (hakimi)-[:JOUE_POUR]->(psg);
 
-// Répétez le même motif pour les autres joueurs et équipes...
+MATCH (marquinhos:Joueur {nom: 'Marquinhos'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
+CREATE (marquinhos)-[:JOUE_POUR]->(psg);
 
-MATCH (kroos:Joueur {nom: 'Toni Kroos'}), (real:Equipe {nom: 'Real Madrid'})
-CREATE (kroos)-[:JOUE_POUR]->(real);
+MATCH (verratti:Joueur {nom: 'Verratti'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
+CREATE (verratti)-[:JOUE_POUR]->(psg);
+
+// Al Nassr
+MATCH (ronaldo:Joueur {nom: 'Ronaldo'}), (alnassr:Equipe {nom: 'Al Nassr'})
+CREATE (ronaldo)-[:JOUE_POUR]->(alnassr);
+
+MATCH (gervinho:Joueur {nom: 'Gervinho'}), (alnassr:Equipe {nom: 'Al Nassr'})
+CREATE (gervinho)-[:JOUE_POUR]->(alnassr);
+
+MATCH (aboubakar:Joueur {nom: 'Aboubakar'}), (alnassr:Equipe {nom: 'Al Nassr'})
+CREATE (aboubakar)-[:JOUE_POUR]->(alnassr);
+
+// Real Madrid
+MATCH (benzema:Joueur {nom: 'Benzema'}), (real:Equipe {nom: 'Real Madrid'})
+CREATE (benzema)-[:JOUE_POUR]->(real);
+
+MATCH (modric:Joueur {nom: 'Modrić'}), (real:Equipe {nom: 'Real Madrid'})
+CREATE (modric)-[:JOUE_POUR]->(real);
 
 //Joueur - Joueur (amitié) (adapté pour 3 joueurs par équipe)://
 
 // Amitiés entre joueurs du PSG
-MATCH (hakimi:Joueur {nom: 'Achraf Hakimi'}), (marquinhos:Joueur {nom: 'Marquinhos'})
+MATCH (hakimi:Joueur {nom: 'Hakimi'}), (marquinhos:Joueur {nom: 'Marquinhos'})
 CREATE (hakimi)-[:AMITIE]->(marquinhos),
 (marquinhos)-[:AMITIE]->(hakimi); // Relation bidirectionnelle
 
 // Amitiés entre joueurs d'Al Nassr
-MATCH (cristiano:Joueur {nom: 'Cristiano Ronaldo'}), (konan:Joueur {nom: 'Gervinho'})
-CREATE (cristiano)-[:AMITIE]->(konan),
-(konan)-[:AMITIE]->(cristiano); // Relation bidirectionnelle
+MATCH (ronaldo:Joueur {nom: 'Ronaldo'}), (gervinho:Joueur {nom: 'Gervinho'})
+CREATE (ronaldo)-[:AMITIE]->(gervinho),
+(gervinho)-[:AMITIE]->(ronaldo); // Relation bidirectionnelle
 
 // Amitiés entre joueurs du Real Madrid (adapter en fonction des joueurs)
-MATCH (benzema:Joueur {nom: 'Karim Benzema'}), (modric:Joueur {nom: 'Luka Modrić'})
+MATCH (benzema:Joueur {nom: 'Benzema'}), (modric:Joueur {nom: 'Modrić'})
 CREATE (benzema)-[:AMITIE]->(modric),
 (modric)-[:AMITIE]->(benzema);  // Relation bidirectionnelle
 
@@ -78,7 +97,7 @@ CREATE (benzema)-[:AMITIE]->(modric),
 
 MATCH (psg:Equipe {nom: 'Paris Saint-Germain'}), (real:Equipe {nom: 'Real Madrid'})
 CREATE (psg)-[:RIVALITE]->(real),
-(real)-[:RIVALITE]->(psg);  // Relation bidirectionnelle
+(real)-[:RIVALITE]->(psg);
 
 MATCH (real:Equipe {nom: 'Real Madrid'}), (alnassr:Equipe {nom: 'Al Nassr'})
 CREATE (real)-[:RIVALITE]->(alnassr),
@@ -87,40 +106,55 @@ CREATE (real)-[:RIVALITE]->(alnassr),
 //Joueur - Équipe (ancien joueur)://
 
 // Hakimi (Real Madrid)
-MATCH (hakimi:Joueur {nom: 'Achraf Hakimi'}), (real:Equipe {nom: 'Real Madrid'})
+MATCH (hakimi:Joueur {nom: 'Hakimi'}), (real:Equipe {nom: 'Real Madrid'})
 CREATE (hakimi)-[:ANCIEN_JOUEUR]->(real);
 
 // Cristiano (autres anciens clubs) - À compléter selon vos informations
-MATCH (cristiano:Joueur {nom: 'Cristiano Ronaldo'}), (autre_equipe:Equipe {nom: 'Manchester United'})  // Remplacer 'autre_equipe' par le nom réel
-CREATE (cristiano)-[:ANCIEN_JOUEUR]->(autre_equipe);
+MATCH (ronaldo:Joueur {nom: 'Ronaldo'}), (manu:Equipe {nom: 'Manchester United'})  
+CREATE (ronaldo)-[:ANCIEN_JOUEUR]->(manu);
 
 
-MATCH (coach2:Entraîneur {nom: 'Rudi Garcia'}), (alnassr:Equipe {nom: 'Al Nassr'})
-CREATE (coach2)-[:ENTRAINE]->(alnassr);
+// --------------------------------------------------------------------
+// -- Query
+// --------------------------------------------------------------------
 
-MATCH (marquinhos:Joueur {nom: 'Marquinhos'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
-CREATE (marquinhos)-[:JOUE_POUR]->(psg);
+//voire tout la base de donnes 
+Match (n) return n
 
-MATCH (verratti:Joueur {nom: 'Marco Verratti'}), (psg:Equipe {nom: 'Paris Saint-Germain'})
-CREATE (verratti)-[:JOUE_POUR]->(psg);
+// Voire tous les joueurs 
+MATCH (j :Joueur ) return j
 
-MATCH (ronaldo:Joueur {nom: 'Cristiano Ronaldo'}), (alnassr:Equipe {nom: 'Al Nassr'})
-CREATE (ronaldo)-[:JOUE_POUR]->(alnassr);
+// Voire tous les entraineurs 
+MATCH (en :Entraineur ) return en
 
-MATCH (gervinho:Joueur {nom: 'Gervinho'}), (alnassr:Equipe {nom: 'Al Nassr'})
-CREATE (gervinho)-[:JOUE_POUR]->(alnassr);
+// Voire tous les entraineurs 
+MATCH (eq :Equipe ) return eq
 
-MATCH (aboubakar:Joueur {nom: 'Vincent Aboubakar'}), (alnassr:Equipe {nom: 'Al Nassr'})
-CREATE (aboubakar)-[:JOUE_POUR]->(alnassr);
 
-MATCH (benzema:Joueur {nom: 'Karim Benzema'}), (real:Equipe {nom: 'Real Madrid'})
-CREATE (benzema)-[:JOUE_POUR]->(real);
+// selectionner tous les joueurs et equippes
+MATCH (j :Joueur ) , (eq :Equipe ) return j , eq
 
-MATCH (modric:Joueur {nom: 'Luka Modrić'}), (real:Equipe {nom: 'Real Madrid'})
-CREATE (modric)-[:JOUE_POUR]->(real);
+//selectionner un joueur appelle "Ronaldo"
+MATCH (j:Joueur {nom:"Ronaldo"}) return j
 
-MATCH (cristiano:Joueur {nom: 'Cristiano Ronaldo'}), (manu:Equipe {nom: 'Manchester United'})  
-CREATE (cristiano)-[:ANCIEN_JOUEUR]->(manu);
+//selectionner un joueur appelle "Ronaldo" avec Where
+MATCH (j:Joueur ) 
+WHERE j.nom = "RONALDO"
+RETURN J
+
+//selectionner un joueur appelle "Ronaldo Cristiano"
+MATCH (j:Joueur ) 
+WHERE j.nom = "Ronaldo" and j.prenom = "Cristiano"
+RETURN j
+
+
+
+
+
+
+
+
+
 
 
 // Mettre à jour un joueur
