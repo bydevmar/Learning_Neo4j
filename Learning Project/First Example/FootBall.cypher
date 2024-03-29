@@ -142,45 +142,20 @@ MATCH (j:Joueur )
 WHERE j.nom = "RONALDO"
 RETURN J
 
-//selectionner un joueur appelle "Ronaldo Cristiano"
+//selectionner un joueur appelle "Ronaldo Cristiano" sans where
+MATCH (j:Joueur {j.nom = "Ronaldo" , j.prenom = "Cristiano"} ) 
+RETURN j
+
+
+//selectionner un joueur appelle "Ronaldo Cristiano" avec where
 MATCH (j:Joueur ) 
 WHERE j.nom = "Ronaldo" and j.prenom = "Cristiano"
 RETURN j
 
-
-
-
-
-
-
-
-
-
-
-// Mettre à jour un joueur
-MATCH (j:Joueur {nom: 'Mbappe'})
-SET j.age = 24;
-
-// Mettre à jour une propriété d'une relation
-MATCH (j:Joueur {nom: 'Mbappe'})-[r:JOUE_POUR]->(e:Equipe {nom: 'PSG'})
-SET r.duree_contrat = 5;
-
-// Ajouter une propriété de salaire à un joueur
-MATCH (j:Joueur {nom: 'Mbappe'})
-SET j.salaire = 200000;
-
-// Filtrer pour les nœuds spécifiques
-MATCH (j:Joueur)
-WHERE j.age > 30
-RETURN j;
-
-// Obtenir un joueur spécifique
-MATCH (j:Joueur {nom: 'Mbappe'})
-RETURN j;
-
-// Obtenir tous les joueurs
-MATCH (j:Joueur)
-RETURN j;
+//Selectionner tous les joueurs qui ne sont pas "Hakimi"
+match (j:Joueur)
+where j.nom <> "Hakimi"
+return j
 
 // Obtenir tous les joueurs qui ne sont pas Hakimi
 MATCH (j:Joueur)
@@ -192,29 +167,42 @@ MATCH (j:Joueur)
 WHERE j.age * 2 > 50
 RETURN j;
 
-// Utilisation de multiples conditions
-MATCH (j:Joueur)
-WHERE j.age > 25 AND j.salaire > 100000
-RETURN j;
-
 // Limiter les résultats à 2
 MATCH (j:Joueur)
 RETURN j
 LIMIT 2;
 
+// SKIP
+Match (j:Joueur) 
+return j 
+SKIP 2
+LIMIT 2
+
 // Ordonner les résultats par âge décroissant
 MATCH (j:Joueur)
 RETURN j
-ORDER BY j.age DESC;
+ORDER BY j.age DESC; //ASC
+
 
 // Filtrer plusieurs nœuds en même temps
 MATCH (j:Joueur), (e:Equipe)
-WHERE j.age > 25 AND e.nom = 'PSG'
+WHERE j.age > 30 AND e.nom = 'Al Nassr'
 RETURN j, e;
+
 
 // Requête pour les relations
 MATCH (j:Joueur)-[r:JOUE_POUR]->(e:Equipe)
 RETURN j, r, e;
+
+
+
+
+
+
+
+
+
+
 
 // Obtenir tous les coéquipiers de Hakimi qui gagnent 45 millions
 MATCH (hakimi:Joueur {nom: 'Hakimi'})-[:JOUE_POUR]->(e:Equipe)<-[:JOUE_POUR]-(coequipier:Joueur)
@@ -236,3 +224,18 @@ DELETE r;
 // Supprimer tous les nœuds
 MATCH (n)
 DETACH DELETE n;
+
+
+
+
+// Mettre à jour un joueur
+MATCH (j:Joueur {nom: 'Mbappe'})
+SET j.age = 24;
+
+// Mettre à jour une propriété d'une relation
+MATCH (j:Joueur {nom: 'Mbappe'})-[r:JOUE_POUR]->(e:Equipe {nom: 'PSG'})
+SET r.duree_contrat = 5;
+
+// Ajouter une propriété de salaire à un joueur
+MATCH (j:Joueur {nom: 'Mbappe'})
+SET j.salaire = 200000;
