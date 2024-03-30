@@ -195,19 +195,11 @@ MATCH (j:Joueur)-[r:JOUE_POUR]->(e:Equipe)
 RETURN j, r, e;
 
 
-
-
-
-
-
-
-
-
-
 // Obtenir tous les coéquipiers de Hakimi qui gagnent 45 millions
-MATCH (hakimi:Joueur {nom: 'Hakimi'})-[:JOUE_POUR]->(e:Equipe)<-[:JOUE_POUR]-(coequipier:Joueur)
-WHERE coequipier.salaire = 45000000
+MATCH (hakimi:Joueur {nom: 'Ronaldo'})-[:JOUE_POUR]->(e:Equipe)<-[:JOUE_POUR]-(coequipier:Joueur)
+WHERE coequipier.salaire_annuel >  5000000
 RETURN coequipier;
+
 
 // Agrégation
 MATCH (j:Joueur)
@@ -224,9 +216,6 @@ DELETE r;
 // Supprimer tous les nœuds
 MATCH (n)
 DETACH DELETE n;
-
-
-
 
 // Mettre à jour un joueur
 MATCH (j:Joueur {nom: 'Mbappe'})
