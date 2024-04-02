@@ -1,0 +1,8 @@
+[
+    {"comment_id": 1, "user_id": 2, "post_id": 1, "content": "Nice post!", "date": "2022-01-01"},
+    {"comment_id": 2, "user_id": 3, "post_id": 2, "content": "Love the photo!", "date": "2022-01-02"},
+    {"comment_id": 3, "user_id": 4, "post_id": 3, "content": "Glad to hear it!", "date": "2022-01-03"},
+    {"comment_id": 4, "user_id": 5, "post_id": 4, "content": "Interesting read.", "date": "2022-01-04"},
+    {"comment_id": 5, "user_id": 1, "post_id": 5, "content": "Me too!", "date": "2022-01-05"}
+  ]
+  
