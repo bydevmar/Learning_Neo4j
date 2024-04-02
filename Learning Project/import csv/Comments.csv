@@ -1,0 +1,6 @@
+comment_id,user_id,post_id,content,date
+1,2,1,"Nice post!",2022-01-01
+2,3,2,"Love the photo!",2022-01-02
+3,4,3,"Glad to hear it!",2022-01-03
+4,5,4,"Interesting read.",2022-01-04
+5,1,5,"Me too!",2022-01-05
