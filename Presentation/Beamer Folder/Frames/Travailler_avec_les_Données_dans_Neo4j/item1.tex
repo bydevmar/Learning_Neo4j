@@ -1,0 +1,10 @@
+\begin{frame}{Importation de données dans Neo4j à partir de différentes sources}
+  \begin{block}{Importation à partir de fichiers CSV}
+  Vous pouvez importer des données à partir de fichiers CSV en utilisant la commande LOAD CSV dans Cypher. Cela fonctionne bien pour les données tabulaires ou structurées.
+
+  \end{block}
+  \begin{block}{Structures de requêtes}
+  LOAD CSV WITH HEADERS FROM 'file:///fichier.csv' AS ligne
+CREATE (:TypeDeNoeud {propriete1: ligne.valeur1, propriete2: ligne.valeur2, ...}).
+  \end{block}
+\end{frame}

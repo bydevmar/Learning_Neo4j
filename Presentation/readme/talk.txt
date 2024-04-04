@@ -1,0 +1,14 @@
+Cas d'Utilisation Réels et Études de Cas : 
+
+Réseaux Sociaux : 
+
+Neo4j est largement utilisé dans les réseaux sociaux pour modéliser et analyser les relations entre les utilisateurs. 
+Par exemple, il peut aider à identifier les tendances des utilisateurs, à recommander des amis ou du contenu,
+et à détecter les communautés.
+
+
+
+Détection de Fraude:
+Dans le domaine de la détection de fraude, Neo4j peut aider à identifier les modèles de comportement suspect 
+en analysant les relations entre les entités. Par exemple, il peut être utilisé pour détecter les schémas de 
+fraude dans les transactions financières.

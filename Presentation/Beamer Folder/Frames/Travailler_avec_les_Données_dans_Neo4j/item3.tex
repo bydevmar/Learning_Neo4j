@@ -1,0 +1,11 @@
+\begin{frame}{Exportation de données depuis Neo4j pour analyse et reporting}
+  \begin{block}{Exportation vers des fichiers CSV :}
+ 
+Vous pouvez exporter des données depuis Neo4j vers des fichiers CSV à l'aide de la commande 'EXPORT CSV' dans Cypher. Cette méthode est utile si vous souhaitez analyser les données dans des outils d'analyse de données ou des tableurs
+  \end{block}
+  \begin{block}{Structures de requêtes}
+CALL apoc.export.csv.all('/chemin/vers/fichier.csv', {})
+
+
+  \end{block}
+\end{frame}

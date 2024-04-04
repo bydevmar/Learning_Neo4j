@@ -1,0 +1,17 @@
+\begin{frame}{Exemples de requêtes}
+  \begin{block}{Créer un nœud}
+  CREATE (:Person {name: 'simo', age: 30})
+
+\end{block}
+    \begin{block}{Créer une relation entre deux nœuds :}
+   MATCH (a:Person), (b:Person)
+WHERE a.name = 'simo' AND b.name = 'walid'
+CREATE (a)-[:FRIEND]->(b)
+
+  \end{block}
+   \begin{block}{Trouver tous les nœuds d'un type spécifique :}
+   MATCH (p:Person)
+RETURN p
+
+  \end{block}
+  \end{frame}

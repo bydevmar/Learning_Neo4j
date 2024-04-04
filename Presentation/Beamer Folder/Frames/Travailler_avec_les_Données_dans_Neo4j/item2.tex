@@ -1,0 +1,11 @@
+\begin{frame}{Importation de données dans Neo4j à partir de différentes sources}
+  \begin{block}{Importation à partir de fichiers JSON}
+ 
+Pour importer des données à partir de fichiers JSON dans Neo4j, vous pouvez utiliser l'outil apoc.load.json
+  \end{block}
+  \begin{block}{Structures de requêtes}
+CALL apoc.load.json('file:///chemin/vers/fichier.json') YIELD value
+CREATE (:TypeDeNoeud {propriete1: value.propriete1, propriete2: value.propriete2, ...})
+
+  \end{block}
+\end{frame}

@@ -1,0 +1,11 @@
+\begin{frame}{Exportation de données depuis Neo4j pour analyse et reporting}
+  \begin{block}{Exportation vers des fichiers JSON :}
+ Vous pouvez également exporter des données depuis Neo4j vers des fichiers JSON à l'aide de la fonction apoc.export.json.query. Cela peut être utile si vous avez besoin de manipuler les données dans des applications qui acceptent le format JSON.
+  \end{block}
+  \begin{block}{Structures de requêtes}
+CALL apoc.export.json.query("MATCH (n) RETURN n", '/chemin/vers/fichier.json', {})
+
+
+
+  \end{block}
+\end{frame}

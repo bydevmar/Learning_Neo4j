@@ -1,0 +1,18 @@
+\begin{frame}{Création des entraîneurs et des relations entre joueurs et équipes}
+  \begin{block}{Création des entraîneurs}
+    \begin{itemize}
+      \item CREATE (entraineur1:Entraineur {nom: 'EntraineurPSG'});
+      \item CREATE (entraineur2:Entraineur {nom: 'EntraineurFCB'});
+      \item CREATE (entraineur3:Entraineur {nom: 'EntraineurAlNassr'});
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Création des relations entre joueurs et équipes}
+    \begin{itemize}
+      \item CREATE (hakimi)-[:JOUE\_POUR]->(psg);
+      \item CREATE (cristiano)-[:JOUE\_POUR]->(alnasser);
+      \item CREATE (messi)-[:JOUE\_POUR]->(fcb);
+      \item CREATE (mbappe)-[:JOUE\_POUR]->(psg);
+    \end{itemize}
+  \end{block}
+\end{frame}

@@ -1,0 +1,134 @@
+\documentclass[aspectratio=149]{beamer}
+% The values that it accepts are: 1610, 169, 149, 54, 43 and 32, which stand for the ratios 16:10, 16:9, 14:9, 5:4, 4:3 and 3:2, respectively.
+
+\include{varia/preamble}
+
+\title[Les fondements des bases de données graphiques]{Exploration de Neo4j}
+%\subtitle[]{}
+
+
+\institute[Faculté Polydisciplinaire de Ouarzazate]
+{
+	Faculté Polydisciplinaire de Ouarzazate \\
+	Master Mathématiques Appliquées pour la Science des Données \\
+	\medskip
+       \begin{minipage}[t]{0.3\linewidth}
+        \raggedright 
+        \textbf{Présenté par :}\\
+        Nour Eddine GAJJA \\
+        Abdelfattah BOUHLALI \\
+        Driss ABATOUR \\
+        Mohamed MALLOUKI \\
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[t]{0.3\linewidth} 
+        \raggedleft 
+        \textbf{Encadré par :} \\ 
+        Salma GAOU \\
+        Charaf Hamidi
+    \end{minipage}
+}
+
+
+\begin{document}
+
+
+
+\sloppy
+
+%% =========
+%% page titre
+%% =========
+
+%% uncomment for cool titlepage
+% \include{0_pagetitre}
+
+%% comment for cool titlepage
+
+\begin{frame}[label=titre, plain]
+\begin{center}%\includegraphics[height=1.2cm]{COPL}%
+  %\hspace{2cm}
+  \includegraphics[height=1.5cm]{img/fpo_logo.png}\end{center}
+ \titlepage
+ 
+\end{frame}
+
+%% =========
+%% TOC
+%% =========
+\begin{frame}[label=toc]{PLAN :}
+ \setlength{\leftskip}{5cm}%
+ \small\tableofcontents[subsectionstyle=hide]
+\end{frame}
+
+%% =========
+%% Contenu
+%% =========
+%
+
+
+
+%Introduction aux Concepts
+\include{Frames/Introduction_Concepts/Introduction}
+
+
+%Architecture de Neo4j
+\include{Frames/Architecture_de_Neo4j/Architecture}
+
+%Cas d'Utilisation Réels et Études de Cas
+\include{Frames/Use_Case/Cas_Utilisation}
+
+%Cypher Query Language Démonstration
+\include{Frames/Cypher_Query_Language/Cypher}
+
+%Travailler avec les Données dans Neo4j
+\include{Frames/Travailler_avec_les_Données_dans_Neo4j/donne}
+
+%Neo4j dans le Développement d'Applications
+
+
+%Administration et Optimisation de Neo4j
+\include{Frames/administration_optimisation/Administrastion}
+
+
+%Ressources et communauté, Tendances Futures et Sujets Avancés
+\include{Frames/Ressources_et_communaute/Ressources}
+
+%Conclusion
+\include{Frames/Conclusion/Conclusion}
+
+\begin{frame}{}
+  \centering
+  \Huge Merci pour votre attention!\\
+  \normalsize
+  \vspace{10mm} % Adds vertical space
+ Si vous avez des questions ou des commentaires, \\
+ nous serons heureux de vous répondre
+\end{frame}
+
+%% =========
+%% Biblio
+%% =========
+
+%\begin{frame}[allowframebreaks]{Bibliographie}
+%\bibliographystyle{francais} 
+%\bibliography{varia/biblio}  
+ 
+%\end{frame}
+
+
+\begin{frame}{Webographie}
+  \begin{itemize}
+    \item Neo4j Official Website: www.neo4j.com
+    \item Neo4j Documentation: neo4j.com/docs/
+    \item Neo4j Developer Guides: neo4j.com/developer/guide/
+    \item Neo4j Community: community.neo4j.com
+    \item Neo4j on GitHub: github.com/neo4j
+    \item Neo4j Blog: neo4j.com/blog/
+    \item Top 10 Use Cases : https://go.neo4j.com/rs/710-RRC-335/images/Neo4j-Top-10-Use-Cases-FR-A4.pdf
+  \end{itemize}
+\end{frame}
+
+
+% End of slides
+\end{document}

@@ -1,0 +1,20 @@
+\begin{frame}{ \textbf{Example  Importation à partir de fichiers CSV}}
+\textit{}{\textbf{Fichier CSV :}}  
+    \begin{center}
+        \begin{tabular}{|l|l|l|}
+            \hline
+           name & ville& age \\
+            \hline
+            hassan & casa& 25 \\
+           walid & fes  & 23 \\
+           fatima & agadir & 65 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+ \begin{block}{cypher}
+ LOAD CSV WITH HEADERS FROM 'file:///employees.csv' AS row
+CREATE (:person { name: row.name, ville: row.ville, age: toInteger(row.age)})
+
+  \end{block}
+\end{frame}    
